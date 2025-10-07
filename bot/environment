@@ -3,5 +3,5 @@ RABBIT_MQ_URL=amqp://rabbitmq:5672
 NOTIFICATIONS_CHANGES_QUEUE=notifications_changes
 RESPONSE_QUEUE=response_queue
 MONGO_URL=mongodb://mongo:27017
-DB_NAME=sneaky
+DB_NAME=sneaky-findoc
 RABBIT_RECONNECT_INTERVAL=8000
