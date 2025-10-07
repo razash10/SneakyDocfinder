@@ -1,1 +1,1 @@
-# SneakyDocfinder
+# SneakyFindoc
