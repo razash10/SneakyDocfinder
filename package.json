@@ -1,5 +1,5 @@
 {
-  "name": "sneaky-bot",
+  "name": "sneaky-docfinder",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,21 +10,30 @@
     "start": "node ./service/src/index.js",
     "start:dev": "nodemon ./service/src/index.js",
     "check": "eslint ./",
-    "fix": "eslint --fix ./"
+    "fix": "eslint --fix ./",
+    "local:bot": "dotenv -e ./bot/environment -- nodemon --watch ./bot/src --exec \"node ./bot/src/index.js\"",
+    "local:planner": "dotenv -e ./planner/environment -- nodemon --watch ./planner/src --exec \"node ./planner/src/index.js\"",
+    "local:crawler": "dotenv -e ./crawler/environment -- nodemon --watch ./crawler/src --exec \"node ./crawler/src/index.js\"",
+    "local:comparator": "dotenv -e ./comparator/environment -- nodemon --watch ./comparator/src --exec \"node ./comparator/src/index.js\"",
+    "local:services": "concurrently --names bot,planner,crawler,comparator -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold,bgCyan.bold\" \"npm run local:bot\" \"npm run local:planner\" \"npm run local:crawler\" \"npm run local:comparator\"",
+    "local:start": "docker-compose up -d mongo rabbitmq && npm run local:services",
+    "local:stop": "docker-compose down"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.5.2",
+    "amqplib": "^0.10.9",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^6.0.0",
     "isomorphic-fetch": "^3.0.0",
-    "mongoose": "^5.13.15",
+    "mongoose": "^8.19.1",
     "telegraf": "^3.22.1"
   },
   "devDependencies": {
-    "eslint": "^5.2.0",
+    "eslint": "^9.37.0",
     "eslint-plugin-node": "^7.0.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^3.1.10",
+    "concurrently": "^8.2.0",
+    "dotenv-cli": "^7.1.0"
   }
 }
